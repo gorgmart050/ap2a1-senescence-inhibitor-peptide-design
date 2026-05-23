@@ -8,6 +8,7 @@ The framework is optimized for consumer-grade hardware, utilizing a strict casca
 
 ## 📁 Repository Structure
 
+```text
 ap2a1-senescence-peptide-design/
 ├── data/
 │   ├── AP2A1_target_structure.pdb   # Original AP2A1 target structure/backbone
