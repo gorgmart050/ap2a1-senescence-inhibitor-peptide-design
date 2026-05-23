@@ -12,7 +12,8 @@ The framework is optimized for consumer-grade hardware, utilizing a strict casca
 ├── data/
 │   ├── AP2A1_target_structure.pdb   # Original AP2A1 target structure/backbone
 │   ├── top_200_redesigned.fasta     # Output of Step 1 (Top 200 ProteinMPNN sequences)
-│   └── esmfold_structures/          # Output of Step 2 (200 folded PDB structures)
+│   ├── esmfold_structures/          # Output of Step 2 (200 folded PDB structures)
+│   └── docking_results/             # Output of Step 3 (Raw LightDock simulation data)
 ├── scripts/
 │   ├── step1_proteinmpnn.py         # Sequence generation and initial log-likelihood filtering
 │   ├── step2_esmfold.py             # Local GPU-accelerated folding of the top 200 candidates
