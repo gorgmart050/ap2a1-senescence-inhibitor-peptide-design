@@ -21,8 +21,8 @@ The framework is optimized for consumer-grade hardware, utilizing a strict casca
 │   ├── Design180_sequence.txt       # Amino acid sequence of the selected champion lead
 │   ├── Design180_docked_complex.pdb # Structural PDB model of the best binding pose
 │   └── Design180_binding_site.jpg   # Visual interaction analysis of the interface
-└── README.md                        # Project documentation and setup guide
-</code></pre>
+└── README.md                        # Project documentation and setup guide</code></pre>
+
 ---
 
 ## 🛠️ Requirements & Installation
@@ -31,27 +31,23 @@ To run this pipeline locally, you need a Linux/macOS environment (or WSL2 on Win
 
 ### 1. Clone the Repository
 <pre><code>git clone https://github.com/YOUR_USERNAME/ap2a1-senescence-peptide-design.git
-cd ap2a1-senescence-peptide-design
-</code></pre>
+cd ap2a1-senescence-peptide-design</code></pre>
 
 ### 2. Set Up Environment & Dependencies
 We recommend using a Python Virtual Environment or Conda:
 
 # Create and activate python environment
-<pre><code>
-python3 -m venv venv
-source venv/bin/activate
-</code></pre>
+<pre><code>python3 -m venv venv
+source venv/bin/activate</code></pre>
 
 # Install PyTorch with CUDA support (adjust index according to your CUDA toolkit)
-<pre
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+<pre><code>pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # Install ESMFold and required bio-libraries
 pip3 install fair-esm biopython scipy
 
 # Install LightDock
-pip3 install lightdock
+pip3 install lightdock</code></pre>
 
 ---
 
@@ -61,25 +57,25 @@ pip3 install lightdock
 Generates 10,000 de novo sequences conditioned on the AP2A1 structural constraints and extracts the top 200 candidates based on the lowest log-likelihood score.
 
 Command:
-python3 scripts/step1_proteinmpnn.py
+<pre><code>python3 scripts/step1_proteinmpnn.py</code></pre>
 
-Output generated: ./data/top_200_redesigned.fasta
+Output generated: `./data/top_200_redesigned.fasta`
 
 ### Step 2: Structural Folding (ESMFold)
 Folds the selected 200 candidates locally utilizing your GPU.
 
 Command:
-python3 scripts/step2_esmfold.py
+<pre><code>python3 scripts/step2_esmfold.py</code></pre>
 
-Output generated: 200 individual structural PDBs inside ./data/esmfold_structures/
+Output generated: 200 individual structural PDBs inside `./data/esmfold_structures/`
 
 ### Step 3: Targeted Docking (LightDock)
 Filters the folded structures by their pLDDT score (internal structural stability) and runs automated full-atom docking for the top 10 leads against the AP2A1 platform site.
 
 Command:
-bash scripts/step3_lightdock.sh
+<pre><code>bash scripts/step3_lightdock.sh</code></pre>
 
-Output generated: Simulation data stored under ./data/docking_results/
+Output generated: Simulation data stored under `./data/docking_results/`
 
 ---
 
@@ -91,7 +87,7 @@ The repository provides the raw structural data for our top-tier lead candidate,
 * Lead Candidate length: 356 AA
 * Best Binding Score: -25.730 (LightDock Scoring Function)
 
-Users can inspect the ready-to-use complex in ./results/Design180_docked_complex.pdb to review its thermodynamic and geometric complementarity to the target site.
+Users can inspect the ready-to-use complex in `./results/Design180_docked_complex.pdb` to review its thermodynamic and geometric complementarity to the target site.
 
 ---
 
