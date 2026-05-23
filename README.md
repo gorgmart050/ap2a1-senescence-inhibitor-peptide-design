@@ -8,8 +8,7 @@ The framework is optimized for consumer-grade hardware, utilizing a strict casca
 
 ## 📁 Repository Structure
 
-```text
-ap2a1-senescence-peptide-design/
+<pre><code>ap2a1-senescence-peptide-design/
 ├── data/
 │   ├── AP2A1_target_structure.pdb   # Original AP2A1 target structure/backbone
 │   ├── top_200_redesigned.fasta     # Output of Step 1 (Top 200 ProteinMPNN sequences)
@@ -23,7 +22,7 @@ ap2a1-senescence-peptide-design/
 │   ├── Design180_docked_complex.pdb # Structural PDB model of the best binding pose
 │   └── Design180_binding_site.jpg   # Visual interaction analysis of the interface
 └── README.md                        # Project documentation and setup guide
-
+</code></pre>
 ---
 
 ## 🛠️ Requirements & Installation
@@ -31,17 +30,21 @@ ap2a1-senescence-peptide-design/
 To run this pipeline locally, you need a Linux/macOS environment (or WSL2 on Windows) equipped with an NVIDIA GPU configured for CUDA to execute the ESMFold step efficiently.
 
 ### 1. Clone the Repository
-git clone https://github.com/YOUR_USERNAME/ap2a1-senescence-peptide-design.git
+<pre><code>git clone https://github.com/YOUR_USERNAME/ap2a1-senescence-peptide-design.git
 cd ap2a1-senescence-peptide-design
+</code></pre>
 
 ### 2. Set Up Environment & Dependencies
 We recommend using a Python Virtual Environment or Conda:
 
 # Create and activate python environment
+<pre><code>
 python3 -m venv venv
 source venv/bin/activate
+</code></pre>
 
 # Install PyTorch with CUDA support (adjust index according to your CUDA toolkit)
+<pre
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
 # Install ESMFold and required bio-libraries
