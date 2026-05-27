@@ -31,8 +31,8 @@ The framework is optimized for consumer-grade hardware, utilizing a strict casca
 To run this pipeline locally, you need a Linux/macOS environment (or WSL2 on Windows) equipped with an NVIDIA GPU configured for CUDA to execute the ESMFold step efficiently.
 
 ### 1. Clone the Repository
-<pre><code>git clone https://github.com/YOUR_USERNAME/ap2a1-senescence-peptide-design.git
-cd ap2a1-senescence-peptide-design</code></pre>
+<pre><code>git clone https://github.com/gorgmart050/ap2a1-senescence-inhibitor-peptide-design.git
+cd ap2a1-senescence-inhibitor-peptide-design</code></pre>
 
 ### 2. Set Up Environment & Dependencies
 We recommend using a Python Virtual Environment or Conda:
