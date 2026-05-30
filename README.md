@@ -21,7 +21,8 @@ The framework is optimized for consumer-grade hardware, utilizing a strict casca
 ├── results/
 │   ├── Design180_sequence.txt       # Amino acid sequence of the selected champion lead
 │   ├── Design180_docked_complex.pdb # Structural PDB model of the best binding pose
-│   └── Design180_binding_site.jpg   # Visual interaction analysis of the interface
+│   ├── Design180_binding_site.jpg   # Visual interaction analysis of the interface
+│   └── af3_validation/              # Independent AlphaFold3 validation (negative result)
 └── README.md                        # Project documentation and setup guide</code></pre>
 
 ---
@@ -97,6 +98,20 @@ Users can inspect the ready-to-use complex in `./results/Design180_docked_comple
 This repository represents an independent research framework conducted as an AI-driven pilot framework. The complete proteomic and structural automation pipeline was implemented in leisure time, utilizing Google's Gemini as a pair-programmer to tackle structural biology scripting and orchestration workflows.
 
 Note: This data serves as a computational pilot study. I am actively sharing these datasets with international academic partners to evaluate the biological plausibility of Design 180 in vitro.
+
+---
+
+## 🔬 Independent validation (AlphaFold3)
+
+Design 180 was independently re-evaluated by predicting the full AP2A1 + design 180 complex with AlphaFold3 — a structure-prediction model entirely separate from the original pipeline.
+
+**Result: ipTM 0.15 across all 5 models — no inter-chain interaction confirmed.**
+
+AlphaFold3 finds that each chain folds well in isolation, but predicts no preferred binding orientation between AP2A1 and design 180. This negative result is reported openly as part of a self-critical methodology.
+
+Full details, metrics table, interpretation, and raw AF3 confidence files: [results/af3_validation/VALIDATION.md](results/af3_validation/VALIDATION.md)
+
+---
 
 ## 📜 License
 This project is licensed under the MIT License.
