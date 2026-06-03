@@ -1,0 +1,9 @@
+{
+    "design_path": "/home/georg/AP2A1/ear_run/",
+    "binder_name": "AP2A1ear",
+    "starting_pdb": "/home/georg/AP2A1/AP2A1_ear_human.pdb",
+    "chains": "A",
+    "target_hotspot_residues": "",
+    "lengths": [50, 75],
+    "number_of_final_designs": 10
+}
