@@ -55,7 +55,7 @@ AlphaFold3 found that each chain folds well in isolation but predicts no preferr
 The correct mechanistic target for Deguchi's phenotype is **protein amount** — matching siRNA knockdown. A binder that tags AP2A1 for proteasomal degradation (bioPROTAC strategy) achieves this. Crucially:
 
 - A degrader binder only needs to **bind firmly somewhere on AP2A1** — no functional pocket required.
-- The binder can be fused to an E3 ubiquitin ligase recruiter (e.g., VHL-binding domain) to form a biPROTAC.
+- The binder can be fused to an E3 ubiquitin ligase recruiter (e.g., VHL-binding domain) to form a bioPROTAC.
 - This mechanistically matches Deguchi's knockdown: lower protein *amount*, not just altered activity.
 
 ---
@@ -97,7 +97,7 @@ The correct mechanistic target for Deguchi's phenotype is **protein amount** —
 |---|---|---|
 | Average i_pTM | 0.82 | 0.81 |
 | Average i_pAE | 0.20 | 0.21 |
-| ShapeComplementarity | 0.71 | 0.66 |
+| ShapeComplementarity | 0.71 | 0.62 |
 | n_InterfaceResidues | 25 | 23 |
 | n_InterfaceUnsatHbonds | 1 | 1 |
 
