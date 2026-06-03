@@ -147,7 +147,7 @@ AF3 summary confidence JSON files: `results/af3_binder_validation/`.
 
 The low overall ipTM (0.52) is driven by the module-to-module geometry being **underdetermined by the flexible (GGGGS)×3 linker** — this is expected, not a defect. The two functional modules (binder+ear; VHL+ELOB+ELOC) assemble well independently.
 
-**Honest limit:** A productive ubiquitination geometry cannot be determined in silico with a flexible linker. Verifying that the E2~Ub can reach a lysine on AP2A1 within the full CRL2 complex would require wet-lab or dedicated computational methods (CRL modelling with E2~Ub).
+**Honest limit:** A productive ubiquitination geometry cannot be determined in silico with a flexible linker. Verifying that the E2-Ub thioester conjugate can reach a lysine on AP2A1 within the full CRL2 complex would require wet-lab or dedicated computational methods (CRL modelling with E2-Ub).
 
 AF3 summary confidence JSON files: `results/af3_ternary_complex/`.
 
@@ -195,7 +195,7 @@ A validated, robust, well-controlled de novo binder to the α-adaptin appendage 
 - **In silico only.** No SPR, ITC, or cellular data. AF3 ipTM is a confidence score, not a binding affinity.
 - **One backbone.** BindCraft produced only one accepted backbone trajectory; design diversity is limited.
 - **Flexible linker — ternary geometry underdetermined.** The (GGGGS)×3 linker leaves module-to-module orientation unconstrained; productive ubiquitination geometry cannot be assessed in silico.
-- **No full CRL2 modelling.** E2~Ub reach to target lysines was not modeled.
+- **No full CRL2 modelling.** E2-Ub reach to target lysines was not modeled.
 - **Consumer hardware.** Run on RTX 4060 (8 GB VRAM); a longer run on higher VRAM hardware might yield more backbone diversity.
 - **AF3 selectivity test only.** AP2A2 cross-reactivity was identified by AF3 prediction; selectivity would need SPR or cell-based degradation assays to confirm.
 
