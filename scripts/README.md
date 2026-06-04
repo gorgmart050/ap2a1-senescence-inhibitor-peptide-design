@@ -14,6 +14,14 @@ Phase 1 ended in a negative AF3 validation (Design 180 ipTM 0.14–0.15). See `r
 
 ---
 
+## Phase 2 — BindCraft Run Script
+
+| Script | Description |
+|---|---|
+| `run_bindcraft.sh` | Launches FreeBindCraft (`--no-pyrosetta`) against the AP2A1 ear domain; includes 8 GB VRAM env vars. See README §10 for install steps. |
+
+---
+
 ## Phase 2 — Analyses Performed (no standalone scripts saved)
 
 The Phase 2 analyses were performed interactively and not saved as standalone scripts. Descriptions below allow reproduction:

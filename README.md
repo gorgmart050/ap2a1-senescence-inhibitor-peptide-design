@@ -19,8 +19,9 @@ A self-directed computational project building on Deguchi et al. (Cellular Signa
 7. [Selectivity Test & Decisive Negative Result](#7-selectivity-test--decisive-negative-result)
 8. [Honest Conclusion](#8-honest-conclusion)
 9. [Limitations](#9-limitations)
-10. [Repository Structure](#10-repository-structure)
-11. [Contact](#11-contact)
+10. [Installation & Reproduction](#10-installation--reproduction)
+11. [Repository Structure](#11-repository-structure)
+12. [Contact](#12-contact)
 
 ---
 
@@ -201,7 +202,78 @@ A validated, robust, well-controlled de novo binder to the α-adaptin appendage 
 
 ---
 
-## 10. Repository Structure
+## 10. Installation & Reproduction
+
+### Tool
+
+**FreeBindCraft** — PyRosetta-free fork of BindCraft by cytokineking:
+[https://github.com/cytokineking/FreeBindCraft](https://github.com/cytokineking/FreeBindCraft)
+
+The `--no-pyrosetta` flag eliminates the PyRosetta license requirement; relaxation runs via OpenMM (GPU-accelerated) and shape complementarity via `sc-rs`.
+
+### Environment (as run)
+
+| Item | Value |
+|---|---|
+| OS | WSL2 / Ubuntu |
+| GPU | RTX 4060 laptop, 8 GB VRAM |
+| CUDA | 12.4 |
+| conda env | `BindCraft` |
+| FreeBindCraft commit | `d12747d` |
+
+### Install steps (verified against FreeBindCraft README and `install_bindcraft.sh`)
+
+```bash
+# 1. Clone
+git clone https://github.com/cytokineking/FreeBindCraft ~/FreeBindCraft
+cd ~/FreeBindCraft
+
+# 2. Install (PyRosetta-free, CUDA 12.4)
+#    The script creates the "BindCraft" conda env, pins JAX 0.6.0 + CUDA deps,
+#    installs ColabDesign, and downloads AlphaFold2 weights (~3.5 GB).
+bash install_bindcraft.sh --cuda '12.4' --pkg_manager 'conda' --no-pyrosetta
+
+# 3. Activate
+conda activate BindCraft
+```
+
+### GPU check (must show a GPU device before running)
+
+```bash
+python -c "import jax; print(jax.devices())"
+# Expected: [CudaDevice(id=0)] or similar — not [CpuDevice(id=0)]
+```
+
+### 8 GB VRAM note
+
+JAX preallocates GPU memory by default, causing OOM on 8 GB cards. Set these before running:
+
+```bash
+export XLA_PYTHON_CLIENT_PREALLOCATE=false
+export XLA_PYTHON_CLIENT_ALLOCATOR=platform
+```
+
+Also keep `lengths` small (e.g., `[50, 75]`) to limit per-design memory.
+
+### Target PDB preparation
+
+`data/AP2A1_ear_human.pdb` must be extracted before running BindCraft. It is the ear domain of
+AlphaFold model **AF-O95782-F1 v6** (`data/AF-O95782-F1-model_v6.pdb`), residues 735–977, chain A.
+Use PyMOL (`select ear, resi 735-977 and chain A` → `save`) or BioPython `PDBIO` with a residue
+range filter.
+
+### Run
+
+```bash
+bash scripts/run_bindcraft.sh
+```
+
+See `scripts/run_bindcraft.sh` for the exact invocation and paths used.
+The target settings are in `data/AP2A1ear_target.json`.
+
+---
+
+## 11. Repository Structure
 
 ```
 ap2a1-senescence-inhibitor-peptide-design/
@@ -212,6 +284,7 @@ ap2a1-senescence-inhibitor-peptide-design/
 │   └── AP2A1_target_structure.pdb        # Target used in Phase 1 (Design 180)
 ├── scripts/
 │   ├── README.md                         # Index of analyses performed (see note)
+│   ├── run_bindcraft.sh                  # Phase 2: BindCraft run command (see §10)
 │   ├── step1_proteinmpnn.py              # Phase 1: sequence generation
 │   ├── step2_esmfold.py                  # Phase 1: ESMFold structure prediction
 │   └── step3_lightdock.sh                # Phase 1: LightDock docking
@@ -231,6 +304,6 @@ ap2a1-senescence-inhibitor-peptide-design/
 
 ---
 
-## 11. Contact
+## 12. Contact
 
 **Contact:** Georg — georgmartazov@gmail.com
