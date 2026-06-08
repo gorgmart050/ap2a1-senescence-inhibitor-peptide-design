@@ -179,13 +179,26 @@ The binder scores identically on AP2A2 and AP2A1. It is a **pan-α-adaptin binde
 
 **The degrader-for-senescence concept is not viable with this binder.**
 
+### Follow-up: Selectivity Redesign (Two BindCraft Runs, Zero Accepted Designs)
+
+To test whether a *selective* binder could be found by targeting the divergent Cluster B surface (residues 786–817), two additional BindCraft runs were performed with forced hotspots:
+
+- **Run 1** (`ear_run_selective`): all 7 divergent residues as hotspots (A786, A797, A799, A800, A807, A808, A811) — 22 trajectories, 0 accepted.
+- **Run 2** (`ear_run_selective_v2`): 3 exposed-only hotspots (A800, A808, A811) after SASA analysis showed A786/A797/A807 are partially buried — 19 trajectories, 0 accepted.
+
+In both runs, the MPNN i_pAE filter failed for ~97–100 % of all designs (428/439 in Run 1; 380/380 in Run 2). Backbone quality was adequate (Run 2 i_pTM max 0.89, pLDDT max 0.93, SC max 0.75), so the failure is not due to a repulsive surface — it is a **designability gap**: the Cluster B surface is topologically flat with no pocket, and MPNN cannot generate sequences that reproduce the interface position-specifically. Removing the buried hotspots (Run 2) did not change the outcome.
+
+Full details, verified numbers, and interpretation: [results/selectivity_redesign_negative.md](results/selectivity_redesign_negative.md).
+
 ---
 
 ## 8. Honest Conclusion
 
-A validated, robust, well-controlled de novo binder to the α-adaptin appendage was designed and independently corroborated (ipTM 0.92–0.93 across 5 models, two sequence variants, two negative controls), and a coherent bioPROTAC ternary construct was modeled. **However**, the binder is pan-α-adaptin and is not suitable as a *selective* AP2A1 degrader; the therapeutic concept is not viable as designed.
+A validated, robust, well-controlled de novo binder to the α-adaptin appendage was designed and independently corroborated (ipTM 0.92–0.93 across 5 models, two sequence variants, two negative controls), and a coherent bioPROTAC ternary construct was modeled. **However**, the binder is pan-α-adaptin and is not suitable as a *selective* AP2A1 degrader; the therapeutic concept is not viable as designed. Two follow-up BindCraft runs targeting the divergent Cluster B surface produced zero accepted designs, confirming that AP2A1-selective surface binding is not achievable with this approach.
 
-**Project value:** A demonstration of an honest computational triage pipeline that caught a likely fatal selectivity flaw early — in silico, before any wet-lab work. This is documented transparently as a negative result, in the same spirit as the Design 180 result documented in Phase 1. Both negative results are retained in this repository as part of the project's honest arc.
+**Why selectivity is a protein-surface problem with no solution here:** Deguchi et al. (2025) show that AP2A1's role in senescence is its *upregulation and relocalization along stress fibers* — a quantity/localization effect, not an enzymatic or allosteric function. AP2A2 performs the same endocytic role under basal conditions. The selectivity difference between the two paralogs exists at the **transcript level** (mRNA sequences diverge sufficiently for siRNA/ASO selectivity); the protein surfaces are ~88 % identical at the binder epitope. A protein binder cannot exploit RNA-level divergence. The correct therapeutic modality for AP2A1-selective intervention is **transcript-level (siRNA/ASO)**, consistent with Deguchi's own experimental approach.
+
+**Project value:** A demonstration of an honest computational triage pipeline that rigorously delineates *why* the protein-binder route fails for AP2A1 selectivity — before any wet-lab work. Three independent lines of evidence converge: (1) pan-adaptin binding, (2) divergent patch unbindable, (3) ternary geometry underdetermined. Both negative results are retained in this repository as part of the project's honest arc.
 
 **All work is in silico.** Binding predictions ≠ measured affinity. Degradation, cell entry, and cellular effects are unproven and require wet-lab work.
 
@@ -296,7 +309,8 @@ ap2a1-senescence-inhibitor-peptide-design/
 │   ├── bindcraft_final_design_stats.csv  # Phase 2: BindCraft accepted design stats
 │   ├── accepted_designs/                 # Phase 2: Accepted PDB + trajectory plots
 │   ├── af3_binder_validation/            # Phase 2: AF3 binary validation (Binder#1 + ear)
-│   └── af3_ternary_complex/              # Phase 2: AF3 ternary complex modeling
+│   ├── af3_ternary_complex/              # Phase 2: AF3 ternary complex modeling
+│   └── selectivity_redesign_negative.md  # Phase 3: Two redesign runs, 0 accepted — designability gap
 └── README.md
 ```
 
