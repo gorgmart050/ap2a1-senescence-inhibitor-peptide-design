@@ -1,6 +1,6 @@
 # AP2A1 Senescence — Computational Triage Pipeline
 
-**Status: Closed — well-characterised negative (selectivity failure). Documented transparently.**
+**Status: Closed — documented negative.** Selectivity failure, characterised both empirically (design runs) and structurally (literature-grounded rationale). Documented transparently.
 
 A self-directed computational project building on Deguchi et al. (Cellular Signalling, 2025, Osaka), who identified AP2A1 as a senescence-associated protein whose siRNA knockdown reverses senescence markers. The project pivoted from an (unfounded) small-interface "inhibitor" idea to a **targeted-degradation (bioPROTAC) strategy**, designed a de novo binder to the human AP2A1 appendage ("ear") domain, validated it independently, modeled a bioPROTAC ternary complex, and then **falsified the therapeutic premise** via a paralog-selectivity test: the binder is **pan-α-adaptin** (binds AP2A2 as well as AP2A1), so it is not viable as a *selective* AP2A1 degrader. All work is in silico; no wet-lab validation.
 
@@ -200,6 +200,10 @@ A validated, robust, well-controlled de novo binder to the α-adaptin appendage 
 
 **Project value:** A demonstration of an honest computational triage pipeline that rigorously delineates *why* the protein-binder route fails for AP2A1 selectivity — before any wet-lab work. Three independent lines of evidence converge: (1) pan-adaptin binding, (2) divergent patch unbindable, (3) ternary geometry underdetermined. Both negative results are retained in this repository as part of the project's honest arc.
 
+### Structural rationale (why the route is closed in principle, not just in these runs)
+
+Beyond the empirical design failures, the published structural biology predicts the approach cannot work: (1) AP2 is an **obligate heterotetramer** (α/β2/μ2/σ2), so "free, individually targetable AP2A1" is not a physiological species — a degrader hitting the α-ear would perturb the whole endocytic holocomplex (Collins et al., Cell 2002). (2) The **α-appendage reads DPF/DPW and FxDxF motifs** from accessory proteins, which integrins do not carry, so a direct AP2A1(α-ear)–integrin interface has no structural basis (Owen et al., Cell 1999; Praefcke et al., EMBO J 2004). (3) Characterized integrin–AP2 coupling runs through **μ2 (integrin α-tail YxxΦ) and the PTB adapters Dab2/Numb (integrin β-tail NPxY)** — so any AP2A1–integrin-β1 association is most likely **indirect**, not a designable interface (De Franceschi et al., Nat Struct Mol Biol 2016; Moreno-Layseca et al., Nat Cell Biol 2019). (4) The primary paper's evidence is **colocalization / co-movement, not a defined binding interface** (no co-IP), so there is no experimental template for a composite-epitope design (Chantachotikul et al., Cellular Signalling 2025). Full, verified citations and reasoning: [results/ap2a1_closure_structural_rationale.md](results/ap2a1_closure_structural_rationale.md).
+
 **All work is in silico.** Binding predictions ≠ measured affinity. Degradation, cell entry, and cellular effects are unproven and require wet-lab work.
 
 ---
@@ -310,7 +314,8 @@ ap2a1-senescence-inhibitor-peptide-design/
 │   ├── accepted_designs/                 # Phase 2: Accepted PDB + trajectory plots
 │   ├── af3_binder_validation/            # Phase 2: AF3 binary validation (Binder#1 + ear)
 │   ├── af3_ternary_complex/              # Phase 2: AF3 ternary complex modeling
-│   └── selectivity_redesign_negative.md  # Phase 3: Two redesign runs, 0 accepted — designability gap
+│   ├── selectivity_redesign_negative.md  # Phase 3: Two redesign runs, 0 accepted — designability gap
+│   └── ap2a1_closure_structural_rationale.md  # Closure: structural-biology rationale (literature-grounded)
 └── README.md
 ```
 
